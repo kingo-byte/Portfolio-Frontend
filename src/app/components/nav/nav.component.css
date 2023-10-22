@@ -1,0 +1,4 @@
+.unclickable-link {
+  pointer-events: none;
+  cursor: not-allowed;
+}
