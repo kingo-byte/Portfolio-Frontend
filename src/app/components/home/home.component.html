@@ -376,14 +376,14 @@
             <span class="text-gradient d-inline">About Me</span>
           </h2>
           <p class="lead fw-light mb-4">
-            Hello, I'm Mohammad Kamal Itani, a junior software developer
+            Hello, I'm {{ user?.userName }}, a junior software developer
             passionate about crafting elegant code and solving complex problems.
             With a degree in Computer Science, I specialize in C#, JavaScript,
             Angular, and .Net FrameWork. I thrive in collaborative teams,
             turning ideas into solutions. As an aspiring full-stack developer,
             I'm driven to make a difference through impactful projects. Let's
             connect and create something amazing! Contact me at
-            mohammad.itani1999@hotmail.com or find me on LinkedIn.
+            {{ user?.email }} or find me on LinkedIn.
           </p>
           <p class="text-muted"></p>
           <div class="d-flex justify-content-center fs-2 gap-4">

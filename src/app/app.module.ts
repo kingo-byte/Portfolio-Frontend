@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -30,7 +31,12 @@ const routes: Routes = [
     ContactComponent,
     ProjectsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
