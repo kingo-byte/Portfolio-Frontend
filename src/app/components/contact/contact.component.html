@@ -26,11 +26,10 @@
                 id="name"
                 type="text"
                 placeholder="Enter your name..."
-                data-sb-validations="required"
                 formControlName="fullName"
               />
               <label for="name">Full name</label>
-              <div class="invalid-feedback" data-sb-feedback="name:required">
+              <div class="text-danger" *ngIf="myform.hasError('required','fullName') && isFormSubmitted">
                 A name is required.
               </div>
             </div>
@@ -41,14 +40,13 @@
                 id="email"
                 type="email"
                 placeholder="name@example.com"
-                data-sb-validations="required,email"
                 formControlName="email"
               />
               <label for="email">Email address</label>
-              <div class="invalid-feedback" data-sb-feedback="email:required">
+              <div class="text-danger" *ngIf="myform.hasError('required','email') && isFormSubmitted">
                 An email is required.
               </div>
-              <div class="invalid-feedback" data-sb-feedback="email:email">
+              <div class="text-danger" *ngIf="myform.hasError('email','email') && isFormSubmitted">
                 Email is not valid.
               </div>
             </div>
@@ -59,11 +57,10 @@
                 id="phone"
                 type="tel"
                 placeholder="(+961) 00000000"
-                data-sb-validations="required"
                 formControlName="phoneNumber"
               />
               <label for="phone">Phone number</label>
-              <div class="invalid-feedback" data-sb-feedback="phone:required">
+            <div class="text-danger" *ngIf="myform.hasError('required','phoneNumber') && isFormSubmitted">
                 A phone number is required.
               </div>
             </div>
@@ -75,11 +72,13 @@
                 type="text"
                 placeholder="Enter your message here..."
                 style="height: 10rem"
-                data-sb-validations="required"
                 formControlName="body"
               ></textarea>
               <label for="message">Message</label>
-              <div class="invalid-feedback" data-sb-feedback="message:required">
+              <div 
+              class="text-danger"
+              *ngIf="myform.hasError('required','body') && isFormSubmitted"
+              >
                 A message is required.
               </div>
             </div>

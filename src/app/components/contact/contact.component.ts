@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { Message } from 'src/app/services/models/message';
@@ -13,6 +13,7 @@ export class ContactComponent implements OnInit {
   myform!: FormGroup;
   isSuccess: boolean = false;
   isError: boolean = false;
+  isFormSubmitted: boolean = false;
 
   constructor(
     private messageService: MessageService,
@@ -20,10 +21,10 @@ export class ContactComponent implements OnInit {
     private router: Router
   ) {
     this.myform = this.formBuilder.group({
-      fullName: '',
-      email: '',
-      phoneNumber: '',
-      body: '',
+      fullName: ['',[Validators.required]],
+      email: ['',[Validators.required,Validators.email]],
+      phoneNumber: ['',[Validators.required]],
+      body: ['',[Validators.required]],
     });
   }
 
@@ -32,8 +33,11 @@ export class ContactComponent implements OnInit {
   onFormSubmit() {
     this.isSuccess = false;
     this.isError = false;
+    this.isFormSubmitted = true;
 
-    const formData = this.myform.value;
+    if (this.myform.invalid) {
+      return;
+    }
 
     const params: Message = {
       fullName: this.myform.get('fullName')?.value!,
@@ -42,24 +46,13 @@ export class ContactComponent implements OnInit {
       body: this.myform.get('body')?.value!,
     };
 
-    this.messageService
-      .addMessage(params)
-      .subscribe(
-        (response) => (this.showSuccess(response), this.handleError(response))
-      );
-  }
-
-  private handleError(err: any) {
-    console.log('Response Error. Status: ', err.status);
-    console.log('Response Error. Status Text: ', err.statusText);
-    console.log('adsasd');
-  }
-
-  private showSuccess(res: any) {
-    if (res.status != 400) {
-      this.isSuccess = true;
-    } else {
-      this.isError = true;
-    }
+      this.messageService.addMessage(params).subscribe({
+        next: (res) => {
+          this.isSuccess = true;
+        },
+        error: (err) => {
+          this.isError = true;
+        }
+      });
   }
 }
