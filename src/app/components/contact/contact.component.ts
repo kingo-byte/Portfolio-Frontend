@@ -49,6 +49,8 @@ export class ContactComponent implements OnInit {
       this.messageService.addMessage(params).subscribe({
         next: (res) => {
           this.isSuccess = true;
+          this.isFormSubmitted = false;
+          this.myform.reset();
         },
         error: (err) => {
           this.isError = true;
