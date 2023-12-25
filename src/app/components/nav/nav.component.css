@@ -2,3 +2,9 @@
   pointer-events: none;
   cursor: not-allowed;
 }
+
+.a-resume
+{
+  font-size: 1rem;
+  text-transform: uppercase;
+}

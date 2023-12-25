@@ -31,26 +31,56 @@ export class ProfileComponent implements OnInit {
   getExperiences() {
     this.experienceService
       .getAllExperiences()
-      .subscribe(
-        (response) => ((this.experiences = response), this.handleError)
-      );
+      .subscribe({
+           next:(res)=>
+           {
+            this.experiences = res;
+           },
+           error:(err) =>
+           {
+              this.handleError(err)
+           }
+      });
   }
 
   getSkills() {
     this.skillService
       .getAllSkills()
-      .subscribe((response) => ((this.skills = response), this.handleError));
+      .subscribe({
+        next:(res)=>
+        {
+          this.skills = res;
+        },
+        error:(err)=>
+        {
+          this.handleError(err);
+        }
+      })
   }
 
   getLanguages() {
     this.languageService
       .getAllLanguages()
-      .subscribe((response) => ((this.languages = response), this.handleError));
+      .subscribe({
+        next:(res) =>
+        {
+            this.languages = res
+        },
+        error:(err)=>
+        {
+          this.handleError(err);
+        }
+      })
   }
 
   private handleError(err: any) {
     console.log('Response Error. Status: ', err.status);
     console.log('Response Error. Status Text: ', err.statusText);
     console.log(err);
+  }
+
+  receiveExperience(addedExperience:Experience): void
+  {
+     this.experiences.push(addedExperience);
   }
 }

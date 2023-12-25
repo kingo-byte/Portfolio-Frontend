@@ -1,0 +1,59 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Experience</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form
+        id="experienceForm"
+        [formGroup]="experienceForm"
+        (ngSubmit)="onExperienceFormSubmit()"
+
+        >
+          <div class="mb-3">
+            <label for="title" class="col-form-label">Title<span class="text-danger">*</span>:</label>
+            <input type="text" formControlName="title" class="form-control" placeholder="Enter Title" id="title">
+            <div class="text-danger" *ngIf="experienceForm.hasError('required','title') && isFormSubmitted">
+              title is required
+            </div>
+
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="col-form-label">Description<span class="text-danger">*</span>:</label>
+            <input type="text" formControlName="description" class="form-control" placeholder="Enter Description" id="description">
+            <div class="text-danger" *ngIf="experienceForm.hasError('required','description') && isFormSubmitted">
+              description is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="Address" class="col-form-label">Address<span class="text-danger">*</span>:</label>
+            <input type="text" formControlName="address" class="form-control" placeholder="Enter Address" id="address">
+            <div class="text-danger" *ngIf="experienceForm.hasError('required','address') && isFormSubmitted">
+               address is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="start-date" class="col-form-label">Start Date<span class="text-danger">*</span>:</label>
+            <input type="datetime-local" formControlName="start" class="form-control" id="start-date">
+            <div class="text-danger" *ngIf="experienceForm.hasError('required','start') && isFormSubmitted">
+              start date is required
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="end-date" class="col-form-label">End Date:</label>
+            <input type="datetime-local" formControlName="end" class="form-control" id="end-date">
+          </div>
+          <div style="display: flex; flex-direction: row; align-items: center; justify-content: end;">
+            <button type="button" #closebutton  class="btn btn-add btn-info" style="margin-right: 20px;" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-add btn-success" id="btn-addExperience" (click)="onExperienceFormSubmit()">Add</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>

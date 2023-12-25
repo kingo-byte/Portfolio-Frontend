@@ -13,6 +13,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddExperienceComponent } from './components/add-experience/add-experience.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -31,6 +32,7 @@ const routes: Routes = [
     FooterComponent,
     ContactComponent,
     ProjectsComponent,
+    AddExperienceComponent,
   ],
   imports: [
     BrowserModule,

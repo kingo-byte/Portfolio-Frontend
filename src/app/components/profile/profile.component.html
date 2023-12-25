@@ -10,16 +10,8 @@
       <section>
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h2 class="text-primary fw-bolder mb-0">Experience</h2>
-          <!-- Download resume button-->
-          <!-- Note: Set the link href target to a PDF file within your project-->
-          <a
-            class="btn btn-primary px-4 py-3"
-            href="../../../assets/files/CV.pdf"
-            download="Mohammad Kamal Itani CV"
-          >
-            <div class="d-inline-block bi bi-download me-2"></div>
-            Download Resume
-          </a>
+          <!-- <button class="btn btn-primary">+</button> -->
+          <app-add-experience (addedExperience)="receiveExperience($event)"></app-add-experience>
         </div>
         <!-- Experience Card 1-->
         <div
@@ -49,7 +41,10 @@
       </section>
       <!-- Education Section-->
       <section>
-        <h2 class="text-secondary fw-bolder mb-4">Education</h2>
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h2 class="text-secondary fw-bolder mb-0">Education</h2>
+          <button class="btn btn-primary">+</button>
+        </div>
         <!-- Education Card 1-->
         <div class="card shadow border-0 rounded-4 mb-5">
           <div class="card-body p-5">
